@@ -84,6 +84,46 @@ class Gradebook
 
        string report()
        {
-                  
-       }
+            string message;
+            size_t numStudents = student.size();
+
+            for (size_t i = 0; i < student.size(); i++)
+            {
+                const Student& student1 = student[i];
+
+                message += student1.last_name + ", " + student1.first_name 
+                        + ", " + student1.student_ID;
+
+                for (size_t j = 0; j < assignment_name.size(); j++)
+                {
+                    const string& assignment = assignment_name[j];
+
+                    bool grade_entered = false; 
+
+                    for (size_t k = 0; k < student1.grade.size(); k++)//hererere
+                    {
+                        const Assignment& assign1 = student1.grade[k];
+
+                        if (assign1.assignment_name == assignment)
+                        {
+                            message += ", ";
+                            message += static_cast<char>(assign1.actual_grade / 10) + '0';
+                            message += static_cast<char>(assign1.actual_grade % 10) + '0';
+                            grade_entered = true;
+                            break;
+                        }
+                    }
+
+                    if (!grade_entered)
+                    {
+                        message += ", none";
+                    }
+                }
+
+                message += "\n";
+            }
+
+            return message;
+        }
+
 };
