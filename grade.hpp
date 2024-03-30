@@ -100,7 +100,7 @@ class Gradebook
 
                     bool grade_entered = false; 
 
-                    for (size_t k = 0; k < student1.grade.size(); k++)//hererere
+                    for (size_t k = 0; k < student1.grade.size(); k++)
                     {
                         const Assignment& assign1 = student1.grade[k];
 
